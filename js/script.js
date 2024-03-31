@@ -71,5 +71,40 @@ function clickHandler(e){
 }
 
 function calculate(inputText){
-  const newText = inputText.split(" ");
+  let inputArr = inputText.split(" ");
+  mulDivCalculator(inputArr);
+  addSubCalculator(inputArr);
+  console.log(inputArr);
+}
+
+function mulDivCalculator(inputArr){
+  inputArr.forEach((element,index) => {
+    if(element == "x" || element == "÷"){
+      let num1 = inputArr[index - 1];
+      let num2 = inputArr[index + 1];
+      if(element == "x"){
+        let result = num1 * num2;
+        inputArr.splice(index - 1,3,result);
+      } else if(element == "÷"){
+        let result = num1 / num2;
+        inputArr.splice(index - 1,3,result);
+      }
+    }
+  });
+}
+
+function addSubCalculator(inputArr){
+  inputArr.forEach((element,index) => {
+    if(element == "+" || element == "-"){
+      let num1 = inputArr[index - 1];
+      let num2 = inputArr[index + 1];
+      if(element == "+"){
+        let result = num1 + num2;
+        inputArr.splice(index - 1,3,result);
+      } else if(element == "-"){
+        let result = num1 - num2;
+        inputArr.splice(index - 1,3,result);
+      }
+    }
+  });
 }
