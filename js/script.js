@@ -37,6 +37,7 @@ function clickHandler(e){
     case "clear":
       inputText = [];
       outputPara.textContent = "";
+      console.log("clicked");
       break;
     case "000":
       inputText.push("000");
@@ -93,7 +94,6 @@ function calculate(inputText){
   let inputArr = inputText.split(" ");
   mulDivCalculator(inputArr);
   addSubCalculator(inputArr);
-  render(inputArr[0]);
 }
 
 function mulDivCalculator(inputArr){
@@ -110,9 +110,7 @@ function mulDivCalculator(inputArr){
       } else if(element == "÷"){
         if(num2 == 0){
           alert("You cannot divide numbers by zero!");
-          inputText = [];
-          outputPara.textContent = "";
-          break;
+          location.reload();
         } 
         let result = num1 / num2;
         result = result.toFixed(decimalPoints);
@@ -139,6 +137,7 @@ function addSubCalculator(inputArr){
       }
     }
   }
+  render(inputArr[0]);
 }
 
 function render(str){
